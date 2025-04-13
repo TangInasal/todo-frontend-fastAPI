@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+:root {
+  --background-color: #f8f9fa;        /* Soft off-white for light mode */
+  --text-color: #212529;              /* Dark gray for light mode */
+  --button-bg: #007bff;               /* Vibrant blue for buttons */
+  --button-text: #fff;                /* White text on buttons */
+  --active-button-bg: #0056b3;        /* Darker blue for active state */
+  --input-border: #ced4da;            /* Light gray for input borders */
+  --li-background: #fff;              /* White for list items */
+  --shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for light mode */
+  --container-border: #007bff;        /* Blue border for container */
+  --delete-button-bg: #dc3545;        /* Red for delete buttons in light mode */
+  --delete-button-hover: #c82333;     /* Darker red for hover */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dark-mode {
+  --background-color: #1a1a1a;        /* Very dark gray */
+  --text-color: #e0e0e0;              /* Light gray */
+  --button-bg: #00b4d8;               /* Bright cyan */
+  --button-text: #fff;                /* White text */
+  --active-button-bg: #0096c7;        /* Darker cyan */
+  --input-border: #404040;            /* Dark gray for input borders */
+  --li-background: #2a2a2a;           /* Slightly lighter dark gray */
+  --shadow: 0 2px 6px rgba(0,0,0,0.6); /* Deeper shadow */
+  --container-border: #00b4d8;        /* Cyan border */
+  --delete-button-bg: #ff4d4f;        /* Slightly brighter red for dark mode */
+  --delete-button-hover: #e63946;     /* Darker red for hover in dark mode */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px 0;                   /* Changed from 20px to 20px 0 (top/bottom only) */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.todo-container {
+  background-color: var(--li-background);
+  border: 2px solid var(--container-border);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.todo-container h1 {
+  margin: 0 0 20px 0;
+  font-size: 2rem;
+}
+
+.dark-mode-toggle {
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+button:hover {
+  filter: brightness(90%);
+}
+
+button.active {
+  background-color: var(--active-button-bg);
+}
+
+.delete-button {
+  background-color: var(--delete-button-bg);
+  color: var(--button-text);
+}
+
+.delete-button:hover {
+  background-color: var(--delete-button-hover);
+  filter: none;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  font-size: 16px;
+  flex-grow: 1;
+  transition: border-color 0.2s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--button-bg);
+  box-shadow: 0 0 5px var(--button-bg);
+}
+
+.filter-buttons {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 15px;
+  margin-top: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+  background-color: var(--li-background);
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+li span {
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+li button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
 }

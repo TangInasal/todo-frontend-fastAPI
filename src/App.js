@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/todos';
+  const API_URL = process.env.REACT_APP_API_URL || 'https://todo-backend-fastapiuvicorn-main-app.onrender.com/';
 
   // Load dark mode preference from localStorage
   useEffect(() => {
